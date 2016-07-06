@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotesXamarin.Form">
-  <ContentPage.Padding>
-    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" WinPhone="20,20,20,20" />
-  </ContentPage.Padding>
-  
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+	<StackLayout Orientation="Vertical">
+		<Entry x:Name="Titulo" Text="{Binding Titulo}" Placeholder="Informa um título" />
+	
+		<Editor x:Name="Descricao" Text="{Binding Descricao}" VerticalOptions="FillAndExpand" BackgroundColor="Silver" />
+
+		<Button x:Name="botaoAcao" Clicked="Salvar_Clicked" BackgroundColor="Blue" TextColor="Yellow" />
+	</StackLayout>
+
 </ContentPage>

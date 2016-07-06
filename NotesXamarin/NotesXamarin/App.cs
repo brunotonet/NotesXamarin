@@ -13,17 +13,19 @@ namespace NotesXamarin
     {
         public App()
         {
-            // The root page of your application
-            MainPage = new Lista();
+			var db = new SQLiteConnection(DependencyService.Get<IDadosEspecificos>().CaminhoDB("NOTAS.DB"));
+			db.CreateTable<Nota>();
+			//db.Insert(new Nota() { Titulo = "xxx1", Descricao = "YYY1" });
+			//db.Insert(new Nota() { Titulo = "xxx2", Descricao = "YYY2" });
+			//db.Insert(new Nota() { Titulo = "xxx3", Descricao = "YYY3" });
+
+
+			// The root page of your application
+			MainPage = new NavigationPage(new Lista());
         }
 
         protected override void OnStart()
         {
-            var db = new SQLiteConnection(DependencyService.Get<IDadosEspecificos>().CaminhoDB("NOTAS.DB"));
-            db.CreateTable<Nota>();
-            //db.Insert(new Nota() { Titulo = "xxx1", Descricao = "YYY1" });
-            //db.Insert(new Nota() { Titulo = "xxx2", Descricao = "YYY2" });
-            //db.Insert(new Nota() { Titulo = "xxx3", Descricao = "YYY3" });
             // Handle when your app starts
         }
 

@@ -1,23 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NotesXamarin.Lista">
-  <ContentPage.Padding>
-    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" WinPhone="20,20,20,20" />
-  </ContentPage.Padding>
-
-  <Label Text="Notas" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="NotesXamarin.Lista"
+			BackgroundColor="White">
 
   <ListView x:Name="ListaNotas" VerticalOptions="StartAndExpand">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
           
-          <StackLayout Padding="0, 0, 0, 0">
+          <StackLayout Padding="10, 10, 0, 0">
             <Label Text="{Binding Titulo}" TextColor="#f35e20" />
-            <Label Text="{Binding Descricao}" HorizontalOptions="StartAndExpand" TextColor="#503026" />
           </StackLayout>
-          
+
+		<ViewCell.ContextActions>
+            <MenuItem Clicked="Apagar_Clicked" Text="Apagar" CommandParameter="{Binding .}" IsDestructive="True" />
+         </ViewCell.ContextActions>
+					
         </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>

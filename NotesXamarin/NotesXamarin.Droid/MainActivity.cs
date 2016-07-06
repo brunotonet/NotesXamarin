@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.IO;
+using Xamarin.Forms;
+
+[assembly: Dependency(typeof(NotesXamarin.Droid.DadosEspecificos))]
 
 namespace NotesXamarin.Droid
 {
@@ -20,5 +24,13 @@ namespace NotesXamarin.Droid
             LoadApplication(new App());
         }
     }
+
+	public class DadosEspecificos : IDadosEspecificos
+	{
+		public String CaminhoDB(String NomeDB)
+		{
+			return Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), NomeDB);
+		}
+	}
 }
 
